@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Engineer — Candidate Interview Pack · justDice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:#080a10; --bg2:#0d1018; --bg3:#111520; --card:#0f1219;
+    --green:#00D8AF; --green2:#00f5c8; --purple:#C900FF; --purple2:#e040ff;
+    --text:#eef0f8; --muted:#6b7399; --border:rgba(255,255,255,0.06);
+    --bg-g:rgba(0,216,175,0.08); --bg-p:rgba(201,0,255,0.08);
+    --bd-g:rgba(0,216,175,0.22); --bd-p:rgba(201,0,255,0.22);
+  }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.7; overflow-x:hidden; }
+
+  .prog { position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg,var(--green),var(--purple)); z-index:300; transition:width .1s; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:200; padding:18px 52px; display:flex; align-items:center; justify-content:space-between; background:rgba(8,10,16,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:20px; letter-spacing:-.5px; color:var(--text); text-decoration:none; }
+  .nav-logo .g{color:var(--green);} .nav-logo .p{color:var(--purple);}
+  .nav-links { display:flex; gap:28px; list-style:none; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:14px; transition:color .2s; }
+  .nav-links a:hover { color:var(--text); }
+  .nav-pill { background:var(--green); color:#080a10; font-family:'Syne',sans-serif; font-weight:700; font-size:13px; padding:8px 20px; border-radius:100px; text-decoration:none; transition:all .2s; }
+  .nav-pill:hover { background:var(--green2); transform:translateY(-1px); }
+
+  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:150px 52px 90px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-200px; right:-200px; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(201,0,255,.1) 0%,transparent 65%); pointer-events:none; }
+  .hero::after { content:''; position:absolute; bottom:-100px; left:-100px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(0,216,175,.07) 0%,transparent 65%); pointer-events:none; }
+
+  .eyebrow { display:inline-flex; align-items:center; gap:10px; background:var(--bg-p); border:1px solid var(--bd-p); color:var(--purple2); font-size:13px; font-weight:500; padding:6px 16px; border-radius:100px; margin-bottom:36px; width:fit-content; }
+  .dot { width:6px; height:6px; border-radius:50%; background:var(--purple); animation:blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  .hero h1 { font-family:'Syne',sans-serif; font-size:clamp(52px,7.5vw,104px); font-weight:800; line-height:.95; letter-spacing:-3px; max-width:1000px; margin-bottom:32px; }
+  .hero h1 .hi{color:var(--green);} .hero h1 .lo{color:var(--purple);}
+  .hero-sub { font-size:18px; color:var(--muted); max-width:560px; margin-bottom:52px; font-weight:300; line-height:1.75; }
+  .hero-ctas { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+
+  .btn-g { background:var(--green); color:#080a10; font-family:'Syne',sans-serif; font-weight:700; font-size:15px; padding:14px 28px; border-radius:100px; text-decoration:none; transition:all .2s; display:inline-flex; align-items:center; gap:8px; }
+  .btn-g:hover { background:var(--green2); transform:translateY(-2px); }
+  .btn-p { background:transparent; color:var(--purple2); border:1px solid var(--bd-p); font-family:'Syne',sans-serif; font-weight:600; font-size:15px; padding:13px 28px; border-radius:100px; text-decoration:none; transition:all .2s; display:inline-flex; align-items:center; gap:8px; }
+  .btn-p:hover { background:var(--bg-p); transform:translateY(-2px); }
+
+  .hero-stats { display:flex; gap:52px; margin-top:80px; flex-wrap:wrap; padding-top:52px; border-top:1px solid var(--border); }
+  .stat-num { font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--green); line-height:1; }
+  .stat-lbl { font-size:13px; color:var(--muted); margin-top:4px; }
+
+  section { padding:100px 52px; }
+  .sec-alt { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+  .stag { font-size:11px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
+  .stag.p { color:var(--purple2); }
+  h2 { font-family:'Syne',sans-serif; font-size:clamp(32px,4vw,54px); font-weight:800; letter-spacing:-1.5px; line-height:1.05; margin-bottom:20px; }
+  .lead { font-size:17px; color:var(--muted); max-width:560px; margin-bottom:60px; font-weight:300; line-height:1.8; }
+
+  .divider { height:1px; background:linear-gradient(90deg,transparent,rgba(0,216,175,.2),rgba(201,0,255,.2),transparent); }
+
+  /* ABOUT */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .fact-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:32px; }
+  .fact-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; transition:border-color .2s; }
+  .fact-card:hover { border-color:var(--bd-g); }
+  .fact-num { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--green); line-height:1; }
+  .fact-lbl { font-size:12px; color:var(--muted); margin-top:4px; }
+  .culture-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px; position:relative; overflow:hidden; }
+  .culture-card::before { content:''; position:absolute; top:-60px; right:-60px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle,rgba(0,216,175,.1) 0%,transparent 70%); }
+  .culture-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:16px; }
+  .culture-body { font-size:15px; color:var(--muted); font-weight:300; line-height:1.85; }
+  .culture-body strong { color:var(--text); font-weight:500; }
+
+  /* ROLE */
+  .role-grid { display:grid; grid-template-columns:1.3fr 1fr; gap:60px; align-items:start; }
+  .role-desc { font-size:17px; color:var(--muted); font-weight:300; line-height:1.8; margin-bottom:32px; }
+  .role-desc strong { color:var(--text); font-weight:500; }
+
+  .ai-banner { background:linear-gradient(135deg,rgba(201,0,255,.1),rgba(0,216,175,.07)); border:1px solid var(--bd-p); border-radius:18px; padding:32px 36px; display:flex; align-items:flex-start; gap:24px; margin-bottom:40px; position:relative; overflow:hidden; }
+  .ai-banner::before { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(201,0,255,.12) 0%,transparent 70%); pointer-events:none; }
+  .ai-icon { font-size:40px; flex-shrink:0; margin-top:2px; }
+  .ai-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:var(--purple2); margin-bottom:8px; }
+  .ai-body { font-size:15px; color:var(--muted); font-weight:300; line-height:1.8; }
+  .ai-body strong { color:var(--text); font-weight:500; }
+
+  .bl { display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
+  .bi { display:flex; align-items:flex-start; gap:12px; font-size:15px; color:var(--muted); }
+  .bd { width:5px; height:5px; border-radius:50%; background:var(--green); margin-top:9px; flex-shrink:0; }
+  .bd.p { background:var(--purple); }
+
+  .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+  .tag { font-size:13px; padding:5px 14px; border-radius:100px; font-weight:500; border:1px solid var(--bd-g); background:var(--bg-g); color:var(--green); }
+  .tag.p { border-color:var(--bd-p); background:var(--bg-p); color:var(--purple2); }
+
+  .time-split { margin-top:32px; }
+  .ts-title { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:18px; }
+  .tbars { display:flex; flex-direction:column; gap:10px; }
+  .trow { display:flex; align-items:center; gap:14px; }
+  .tlbl { font-size:13px; color:var(--muted); width:190px; flex-shrink:0; }
+  .ttrack { flex:1; background:var(--bg3); border-radius:100px; height:6px; overflow:hidden; }
+  .tfill { height:100%; border-radius:100px; }
+  .tpct { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--text); width:36px; text-align:right; }
+
+  .sidebar { display:flex; flex-direction:column; gap:12px; }
+  .info-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 22px; transition:border-color .2s; }
+  .info-card:hover { border-color:var(--bd-g); }
+  .info-lbl { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+  .info-val { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; }
+  .info-val.g { color:var(--green); }
+
+  /* PROCESS */
+  .psteps { max-width:800px; }
+  .pstep { display:grid; grid-template-columns:84px 1fr; gap:28px; padding:38px 0; border-bottom:1px solid var(--border); cursor:pointer; }
+  .pstep:first-child { border-top:1px solid var(--border); }
+  .sleft { display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding-top:4px; }
+  .snum { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--muted); letter-spacing:1px; transition:color .2s; }
+  .pstep:hover .snum { color:var(--green); }
+  .sdur { font-size:12px; color:var(--muted); background:var(--bg3); border:1px solid var(--border); padding:3px 10px; border-radius:100px; white-space:nowrap; }
+  .sbadge { display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:4px 12px; border-radius:100px; font-weight:500; margin-bottom:12px; }
+  .b-screen { background:rgba(55,138,221,.1); color:#6bb5f5; border:1px solid rgba(55,138,221,.2); }
+  .b-case { background:var(--bg-p); color:var(--purple2); border:1px solid var(--bd-p); }
+  .b-pres { background:rgba(239,159,39,.1); color:#f5b94a; border:1px solid rgba(239,159,39,.2); }
+  .b-tech { background:var(--bg-g); color:var(--green); border:1px solid var(--bd-g); }
+  .b-final { background:rgba(240,80,255,.1); color:#e040ff; border:1px solid rgba(240,80,255,.2); }
+  .stitle { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-bottom:10px; line-height:1.2; }
+  .sbody { font-size:15px; color:var(--muted); font-weight:300; line-height:1.8; margin-bottom:16px; }
+  .stips { display:flex; flex-direction:column; gap:8px; }
+  .stip { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--muted); }
+
+  /* Collapsible step details */
+  .step-details { max-height:0; overflow:hidden; transition:max-height .35s ease, opacity .3s ease; opacity:0; }
+  .pstep.open .step-details { max-height:600px; opacity:1; }
+  .step-expand { font-size:12px; color:var(--muted); margin-top:6px; display:inline-flex; align-items:center; gap:5px; transition:color .2s; }
+  .pstep:hover .step-expand { color:var(--green); }
+  .pstep.open .step-expand { color:var(--green); }
+  .step-expand-icon { display:inline-block; transition:transform .3s; }
+  .pstep.open .step-expand-icon { transform:rotate(180deg); }
+
+  .deal-box { background:rgba(201,0,255,.07); border:1px solid var(--bd-p); border-radius:12px; padding:14px 20px; margin-top:18px; display:flex; align-items:flex-start; gap:12px; }
+  .deal-lbl { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--purple2); flex-shrink:0; margin-top:2px; }
+  .deal-txt { font-size:14px; color:var(--muted); font-weight:300; }
+  .deal-txt strong { color:var(--purple2); }
+
+  /* QUESTIONS */
+  .qgrid { display:flex; flex-direction:column; gap:12px; max-width:800px; }
+  .qcard { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color .2s; }
+  .qcard:hover { border-color:var(--bd-g); }
+  .qnum { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--green); min-width:28px; }
+  .qtxt { font-size:15px; color:var(--muted); font-weight:300; line-height:1.7; }
+  .qtxt strong { color:var(--text); font-weight:500; }
+
+  /* CASE STUDY */
+  .case-card { background:linear-gradient(135deg,rgba(0,216,175,.06),rgba(201,0,255,.06)); border:1px solid var(--bd-g); border-radius:20px; padding:44px; position:relative; overflow:hidden; max-width:820px; }
+  .case-card::after { content:''; position:absolute; bottom:-80px; right:-80px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(201,0,255,.1) 0%,transparent 70%); }
+  .case-title { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; margin-bottom:16px; }
+  .case-body { font-size:16px; color:var(--muted); font-weight:300; line-height:1.9; margin-bottom:28px; }
+  .case-body strong { color:var(--text); font-weight:500; }
+  .csteps { display:flex; flex-direction:column; gap:12px; }
+  .cstep { display:flex; align-items:flex-start; gap:14px; }
+  .cnum { width:26px; height:26px; border-radius:50%; background:var(--bg-g); border:1px solid var(--bd-g); display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--green); flex-shrink:0; }
+  .ctxt { font-size:15px; color:var(--muted); font-weight:300; line-height:1.7; padding-top:2px; }
+  .ctxt strong { color:var(--text); font-weight:500; }
+
+  /* TEAM */
+  .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .team-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:28px; transition:border-color .2s,transform .2s; }
+  .team-card:hover { border-color:var(--bd-p); transform:translateY(-3px); }
+  .tav { width:46px; height:46px; border-radius:12px; background:var(--bg-p); border:1px solid var(--bd-p); display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:14px; color:var(--purple2); margin-bottom:16px; }
+  .tname { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; margin-bottom:2px; }
+  .trole { font-size:13px; color:var(--muted); margin-bottom:12px; }
+  .tq { font-size:14px; color:var(--muted); font-style:italic; font-weight:300; line-height:1.7; border-left:2px solid var(--bd-p); padding-left:12px; }
+
+  /* BENEFITS */
+  .ben-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+  .ben-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 18px; transition:border-color .2s,transform .2s; }
+  .ben-card:hover { border-color:var(--bd-g); transform:translateY(-2px); }
+  .ben-icon { font-size:24px; margin-bottom:10px; display:block; }
+  .ben-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; margin-bottom:3px; }
+  .ben-desc { font-size:13px; color:var(--muted); font-weight:300; }
+
+  /* FAQ */
+  .faq-list { max-width:740px; }
+  .faq-item { border-bottom:1px solid var(--border); padding:24px 0; cursor:pointer; }
+  .faq-item:first-child { border-top:1px solid var(--border); }
+  .faq-q { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .faq-qt { font-family:'Syne',sans-serif; font-size:16px; font-weight:600; }
+  .faq-tog { width:28px; height:28px; border-radius:50%; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px; color:var(--muted); transition:all .2s; }
+  .faq-item.open .faq-tog { background:var(--green); color:#080a10; border-color:var(--green); transform:rotate(45deg); }
+  .faq-a { font-size:15px; color:var(--muted); font-weight:300; line-height:1.8; max-height:0; overflow:hidden; transition:max-height .3s ease,margin-top .3s; }
+  .faq-item.open .faq-a { max-height:300px; margin-top:14px; }
+
+  /* CTA */
+  .cta { text-align:center; padding:120px 52px; position:relative; overflow:hidden; }
+  .cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 900px 400px at 50% 100%,rgba(0,216,175,.06) 0%,transparent 60%); pointer-events:none; }
+  .cta h2 { max-width:620px; margin:0 auto 20px; }
+  .cta-sub { color:var(--muted); font-size:17px; margin:0 auto 44px; font-weight:300; max-width:480px; }
+  .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+  .cta-note { font-size:13px; color:var(--muted); }
+
+  footer { border-top:1px solid var(--border); padding:28px 52px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .fl { font-family:'Syne',sans-serif; font-weight:800; font-size:18px; color:var(--muted); }
+  .fl .g{color:var(--green);} .fl .p{color:var(--purple);}
+  .fn { font-size:13px; color:var(--muted); }
+
+  .fi { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
+  .fi.visible { opacity:1; transform:none; }
+  .fi2 { opacity:0; transform:translateY(22px); transition:opacity .65s .15s ease,transform .65s .15s ease; }
+  .fi2.visible { opacity:1; transform:none; }
+
+  @media(max-width:900px){
+    nav{padding:16px 22px;} .nav-links{display:none;}
+    section{padding:72px 22px;} .hero{padding:130px 22px 64px;}
+    .hero h1{font-size:clamp(44px,12vw,72px);}
+    .role-grid,.about-grid{grid-template-columns:1fr;gap:40px;}
+    .pstep{grid-template-columns:60px 1fr;gap:14px;}
+    footer{padding:24px 22px;flex-direction:column;align-items:flex-start;}
+    .cta{padding:80px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<nav>
+  <a href="#" class="nav-logo">just<span class="g">D</span><span class="p">ice</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#role">The Role</a></li>
+    <li><a href="#process">Interview</a></li>
+    <li><a href="#questions">Prep</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+  </ul>
+  <a href="mailto:stefania@applike-group.com" class="nav-pill">Get in Touch ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="eyebrow"><div class="dot"></div>Actively Hiring · Hamburg, Germany</div>
+  <h1><span class="hi">AI-Powered</span><br>Product<br><span class="lo">Engineer.</span></h1>
+  <p class="hero-sub">We're not hiring someone to write code. We're hiring someone to <strong style="color:var(--text);font-weight:500">build a product from scratch</strong> — using AI as their multiplier. If you ship 3–4× faster because of how you work, this was written for you.</p>
+  <div class="hero-ctas">
+    <a href="#process" class="btn-g">See Interview Process →</a>
+    <a href="#role" class="btn-p">The Role ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">300M+</div><div class="stat-lbl">Players worldwide</div></div>
+    <div><div class="stat-num">20+</div><div class="stat-lbl">Apps launched</div></div>
+    <div><div class="stat-num">$50M+</div><div class="stat-lbl">Rewards paid out</div></div>
+    <div><div class="stat-num">1</div><div class="stat-lbl">Open seat on the team</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="sec-alt" id="about">
+  <div class="about-grid fi">
+    <div>
+      <p class="stag">Who We Are</p>
+      <h2>The #1 rewarded gaming developer on mobile</h2>
+      <p class="lead" style="margin-bottom:0">justDice builds play-and-earn mobile apps. 300M+ players, 20+ apps, $50M+ paid out to real users — all for free. We're in Hamburg and scaling a global phenomenon with a lean, senior team.</p>
+      <div class="fact-grid">
+        <div class="fact-card"><div class="fact-num">#1</div><div class="fact-lbl">Rewarded gaming developer</div></div>
+        <div class="fact-card"><div class="fact-num">40+</div><div class="fact-lbl">People, 20+ nationalities</div></div>
+        <div class="fact-card"><div class="fact-num">Lean</div><div class="fact-lbl">Small team, real ownership</div></div>
+        <div class="fact-card"><div class="fact-num">HQ</div><div class="fact-lbl">Hamburg, Germany</div></div>
+      </div>
+    </div>
+    <div class="culture-card fi2">
+      <div class="culture-title">How we work</div>
+      <div class="culture-body">
+        We're <strong>lean, fast, and flat</strong>. Small teams, no bureaucracy — you own your work from idea to shipped feature.<br><br>
+        The engineering team right now is <strong>two people</strong>. You'll be the third. Your impact will be immediate, visible, and yours.<br><br>
+        We adapt fast because we skip overhead. <strong>Less documentation, more direct decisions.</strong> Ideas that work reach production quickly — and so do the people behind them.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE -->
+<section id="role">
+  <div class="role-grid fi">
+    <div>
+      <p class="stag">The Opportunity</p>
+      <h2>Product Engineer<br><span style="color:var(--muted);font-size:.62em;letter-spacing:-.5px;">Mid-Level · Full Stack</span></h2>
+
+      <div class="ai-banner">
+        <div class="ai-icon">🤖</div>
+        <div>
+          <div class="ai-title">This is an AI-first role</div>
+          <div class="ai-body">We validated AI-driven development building the Cash Clash MVP. Now we want to maximise it. We don't want someone who uses AI as a <strong>helper</strong> — we want someone who uses it to <strong>deliver 3–4× more, faster</strong>. You'll build a new product from scratch. AI is your leverage.</div>
+        </div>
+      </div>
+
+      <p class="role-desc">You'll join a 2-person engineering team, working directly with Shorya on a <strong>brand new product from zero</strong>. 80% of your time is hands-on shipping — building features, making architecture calls, and thinking about the product as much as the code.</p>
+
+      <div class="bl">
+        <div class="bi"><div class="bd"></div><span>Own features end-to-end — spec to production, no hand-holding</span></div>
+        <div class="bi"><div class="bd"></div><span>Build on React Native (frontend) and Go (backend preferred)</span></div>
+        <div class="bi"><div class="bd"></div><span>Use AI coding tools daily — Claude Code, Codex, Cursor or equivalent</span></div>
+        <div class="bi"><div class="bd"></div><span>Work on B2C products at scale — gaming experience is a strong plus</span></div>
+        <div class="bi"><div class="bd"></div><span>Adapt to a lean team — fewer processes, faster decisions, more impact</span></div>
+        <div class="bi"><div class="bd"></div><span>Contribute to thinking, not just execution — curiosity and initiative matter here</span></div>
+      </div>
+
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600;">Stack</p>
+      <div class="tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Go (preferred)</span>
+        <span class="tag">Full Stack</span>
+        <span class="tag p">AI Coding Tools</span>
+        <span class="tag p">Claude Code / Codex</span>
+      </div>
+
+      <div class="time-split">
+        <div class="ts-title">How your time is spent</div>
+        <div class="tbars">
+          <div class="trow">
+            <div class="tlbl">Hands-on execution & shipping</div>
+            <div class="ttrack"><div class="tfill" style="width:80%;background:var(--green);"></div></div>
+            <div class="tpct">80%</div>
+          </div>
+          <div class="trow">
+            <div class="tlbl">Strategic / product thinking</div>
+            <div class="ttrack"><div class="tfill" style="width:15%;background:var(--purple);"></div></div>
+            <div class="tpct">15%</div>
+          </div>
+          <div class="trow">
+            <div class="tlbl">Collaboration & meetings</div>
+            <div class="ttrack"><div class="tfill" style="width:5%;background:var(--muted);"></div></div>
+            <div class="tpct">5%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar fi2">
+      <div class="info-card"><div class="info-lbl">Role</div><div class="info-val">Product Engineer</div></div>
+      <div class="info-card"><div class="info-lbl">Level</div><div class="info-val">Mid (Intermediate)</div></div>
+      <div class="info-card"><div class="info-lbl">Experience</div><div class="info-val">2–4 years</div></div>
+      <div class="info-card"><div class="info-lbl">Location</div><div class="info-val">Hamburg, Germany 🇩🇪</div></div>
+      <div class="info-card"><div class="info-lbl">Work Model</div><div class="info-val">Onsite (3 days HQ)</div></div>
+      <div class="info-card"><div class="info-lbl">Hiring Manager</div><div class="info-val">Shorya Panwar</div></div>
+      <div class="info-card"><div class="info-lbl">Open Seats</div><div class="info-val g">1</div></div>
+      <div style="background:var(--card);border:1px solid var(--bd-g);border-radius:14px;padding:20px;">
+        <div class="info-lbl" style="margin-bottom:10px;">What we value most</div>
+        <div class="bl" style="margin-bottom:0;gap:8px;">
+          <div class="bi"><div class="bd"></div><span style="font-size:14px;"><strong style="color:var(--green);font-weight:600;">Curiosity</strong> — always asking why</span></div>
+          <div class="bi"><div class="bd"></div><span style="font-size:14px;"><strong style="color:var(--green);font-weight:600;">Initiative</strong> — moves without being pushed</span></div>
+          <div class="bi"><div class="bd"></div><span style="font-size:14px;"><strong style="color:var(--green);font-weight:600;">Ownership</strong> — you ship it, you own it</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section class="sec-alt" id="process">
+  <p class="stag fi">What To Expect</p>
+  <h2 class="fi">The interview process</h2>
+  <p class="lead fi">Six clear stages. No surprises. Here's what to expect from start to finish.</p>
+
+  <div class="psteps fi">
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">01</div><div class="sdur">Ongoing</div></div>
+      <div>
+        <div class="sbadge b-screen">📄 Screening</div>
+        <div class="stitle">CV Review</div>
+        <p class="sbody">Initial review of your background and experience by the TA team and hiring manager.</p>
+      </div>
+    </div>
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">02</div><div class="sdur">30 min</div></div>
+      <div>
+        <div class="sbadge b-screen">☎ Intro</div>
+        <div class="stitle">TA Intro Call</div>
+        <p class="sbody">A first conversation with the TA team to cover the role, the team, and your background.</p>
+      </div>
+    </div>
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">03</div><div class="sdur">Take-home</div></div>
+      <div>
+        <div class="sbadge b-case">🎮 Case Study</div>
+        <div class="stitle">Practical Assignment</div>
+        <p class="sbody">A take-home challenge to assess your product thinking and how you work with AI tools.</p>
+      </div>
+    </div>
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">04</div><div class="sdur">60 min</div></div>
+      <div>
+        <div class="sbadge b-pres">🎤 Presentation</div>
+        <div class="stitle">Case Study Presentation</div>
+        <p class="sbody">Walk the hiring manager through your assignment — your thinking, your process, and your output.</p>
+      </div>
+    </div>
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">05</div><div class="sdur">~60 min</div></div>
+      <div>
+        <div class="sbadge b-tech">⚙ Technical</div>
+        <div class="stitle">Technical Round</div>
+        <p class="sbody">A focused technical conversation with members of the engineering team.</p>
+      </div>
+    </div>
+
+    <div class="pstep">
+      <div class="sleft"><div class="snum">06</div><div class="sdur">30 min</div></div>
+      <div>
+        <div class="sbadge b-final">🤝 Final</div>
+        <div class="stitle">Final Call (if needed)</div>
+        <p class="sbody">A closing conversation with senior leadership — a two-way discussion about vision and fit.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PREP -->
+<section id="questions">
+  <p class="stag fi">Before You Apply</p>
+  <h2 class="fi">A few things to know</h2>
+  <p class="lead fi">We believe in being upfront. Here's what matters most going into this process — read it honestly.</p>
+
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:800px;" class="fi">
+
+    <div class="deal-box" style="border-color:var(--bd-p);background:rgba(201,0,255,.07);">
+      <div style="font-size:22px;flex-shrink:0;">🤖</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--purple2);margin-bottom:6px;">Daily AI coding fluency is non-negotiable</div>
+        <div class="deal-txt">This role requires <strong>daily, hands-on fluency with AI coding tools</strong> — tools like Claude Code, Codex, or Cursor. Not occasional use. Not "I've tried it." We're talking about a workflow where AI is your co-pilot every single day. If that doesn't describe you right now, this isn't the right moment to apply — and that's completely okay.</div>
+      </div>
+    </div>
+
+    <div class="deal-box" style="border-color:var(--bd-g);background:rgba(0,216,175,.06);">
+      <div style="font-size:22px;flex-shrink:0;">⚙️</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--green);margin-bottom:6px;">Full stack experience is required</div>
+        <div class="deal-txt">You need <strong>meaningful hands-on experience with React Native on the frontend</strong> and <strong>backend development experience</strong> — familiarity with Go is a strong advantage. We're not looking for someone who can figure it out over time. If you're genuinely full stack with real shipped products, you're in the right place.</div>
+      </div>
+    </div>
+
+    <div class="deal-box" style="border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);">
+      <div style="font-size:22px;flex-shrink:0;">🤝</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">We value authenticity over polish</div>
+        <div class="deal-txt">Throughout the process, we're not looking for rehearsed answers or impressive-sounding stories. We want to understand <strong>how you actually think and work</strong>. Be honest about what you know and what you don't. Be specific about what you've built and how you built it. The candidates who do best here are the ones who show up as themselves — curious, direct, and genuinely excited about the problem.</div>
+      </div>
+    </div>
+
+    <div class="deal-box" style="border-color:rgba(245,185,74,0.25);background:rgba(245,185,74,0.06);">
+      <div style="font-size:22px;flex-shrink:0;">🧠</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#f5b94a;margin-bottom:6px;">Product thinking and curiosity are required</div>
+        <div class="deal-txt">This role isn't just about writing code — it's about caring deeply about <strong>what gets built and why</strong>. We need someone who asks questions before jumping to solutions, who sees features from the user's perspective, and who is genuinely curious about the product space. If engineering and product feel like two separate worlds to you, this isn't the right fit.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <p class="stag fi">The People</p>
+  <h2 class="fi">Who you'll work with</h2>
+  <p class="lead fi">A small, senior team. Everyone you meet in the process is someone you'll work with directly from day one.</p>
+
+  <div class="team-grid fi">
+    <div class="team-card">
+      <div class="tav">SP</div>
+      <div class="tname">Shorya Panwar</div>
+      <div class="trole">Hiring Manager</div>
+      <div class="tq">"We've validated what's possible with AI-driven development. Now I want someone who can push that further — someone who thinks like a builder and ships like a machine."</div>
+    </div>
+    <div class="team-card">
+      <div class="tav">F</div>
+      <div class="tname">Flo</div>
+      <div class="trole">Engineering · Technical Interviewer</div>
+      <div class="tq">"I care about how people reason through problems. The code matters, but the thinking behind it matters more."</div>
+    </div>
+    <div class="team-card">
+      <div class="tav">GY</div>
+      <div class="tname">György</div>
+      <div class="trole">Engineering · Technical Interviewer</div>
+      <div class="tq">"We're a lean team — that means real ownership, not ticket-taking. I want to know if you'll thrive in that environment."</div>
+    </div>
+    <div class="team-card">
+      <div class="tav">GR</div>
+      <div class="tname">Grigory</div>
+      <div class="trole">Leadership · Final Round</div>
+      <div class="tq">"I want to understand what you'd build here — and why that challenge excites you."</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BENEFITS -->
+<section class="sec-alt" id="benefits">
+  <p class="stag fi">Why justDice</p>
+  <h2 class="fi">Built for people who build</h2>
+  <div class="ben-grid fi">
+    <div class="ben-card"><span class="ben-icon">🏖</span><div class="ben-title">30 Vacation Days</div><div class="ben-desc">Above-market PTO to fully recharge.</div></div>
+    <div class="ben-card"><span class="ben-icon">🏠</span><div class="ben-title">3:2 Hybrid</div><div class="ben-desc">3 days onsite at HQ, 2 days remote.</div></div>
+    <div class="ben-card"><span class="ben-icon">🍳</span><div class="ben-title">Free Breakfast Daily</div><div class="ben-desc">Fresh food and drinks in the office every day.</div></div>
+    <div class="ben-card"><span class="ben-icon">💪</span><div class="ben-title">Gym + Yoga</div><div class="ben-desc">Full on-site gym and weekly yoga classes.</div></div>
+    <div class="ben-card"><span class="ben-icon">📚</span><div class="ben-title">L&D Budget</div><div class="ben-desc">Generous budget for courses, books and conferences.</div></div>
+    <div class="ben-card"><span class="ben-icon">🎉</span><div class="ben-title">Team Events</div><div class="ben-desc">4 quarterly events and regular team lunches.</div></div>
+    <div class="ben-card"><span class="ben-icon">✈</span><div class="ben-title">Relocation Support</div><div class="ben-desc">We actively help you move to Hamburg.</div></div>
+    <div class="ben-card"><span class="ben-icon">🖥</span><div class="ben-title">Modern Hardware</div><div class="ben-desc">Linux, Mac, or Windows — standing desks included.</div></div>
+    <div class="ben-card"><span class="ben-icon">🚇</span><div class="ben-title">Transport Subsidy</div><div class="ben-desc">Public transport costs covered.</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="stag fi">Good To Know</p>
+  <h2 class="fi">Quick answers</h2>
+  <div class="faq-list fi">
+    <div class="faq-item">
+      <div class="faq-q"><div class="faq-qt">How long does the whole process take?</div><div class="faq-tog">+</div></div>
+      <div class="faq-a">We aim to move in 2–3 weeks from intro call to offer. We'll be transparent about timelines at every stage and you'll always know where you stand.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><div class="faq-qt">Do you offer visa sponsorship?</div><div class="faq-tog">+</div></div>
+      <div class="faq-a">Yes. We actively support relocation and visa sponsorship. Our team spans 20+ nationalities and we're experienced at making it work smoothly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><div class="faq-qt">Why 2–4 years specifically?</div><div class="faq-tog">+</div></div>
+      <div class="faq-a">We want someone still in growth mode — hungry, adaptable, and building something to prove. Candidates with 6–7+ years often fit a different kind of role and team. This isn't about capability, it's about the type of challenge that excites you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><div class="faq-qt">What does success look like in the first 90 days?</div><div class="faq-tog">+</div></div>
+      <div class="faq-a">Visible, accelerating productivity. Shipping new features at a pace that improves on our current baseline. By month three, you should feel deeply embedded in the product and confident making decisions independently — without being asked.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><div class="faq-qt">Will I get feedback if I'm unsuccessful?</div><div class="faq-tog">+</div></div>
+      <div class="faq-a">Yes. We treat candidates with respect. You'll get specific, honest feedback — not a generic response.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <p class="stag" style="justify-content:center;display:flex;">Ready to build?</p>
+  <h2>This role was made for builders.</h2>
+  <p class="cta-sub">Ship fast. Think like a product person. Use AI to multiply your output. If that's you — reach out directly.</p>
+  <div class="cta-btns">
+    <a href="mailto:stefania@applike-group.com" class="btn-g">Email Stefania ↗</a>
+    <a href="https://justdice.io/life-at-justdice/" target="_blank" class="btn-p">Life at justDice →</a>
+  </div>
+  <p class="cta-note" style="margin-bottom:10px;">Interested? Send an email directly to our recruiter, <strong style="color:var(--text);">Stefania</strong>, at <a href="mailto:stefania@applike-group.com" style="color:var(--green);text-decoration:none;">stefania@applike-group.com</a></p>
+</section>
+
+<footer>
+  <div class="fl">just<span class="g">D</span><span class="p">ice</span></div>
+  <div class="fn">© 2026 justDice GmbH · Product Engineer · Candidate Interview Pack</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const p = document.getElementById('prog');
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    p.style.width = pct + '%';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi,.fi2').forEach(el => obs.observe(el));
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
